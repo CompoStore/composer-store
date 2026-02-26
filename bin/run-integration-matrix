@@ -1,0 +1,132 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+PROJECTS_DIR="$ROOT_DIR/integration/projects"
+RESULTS_DIR="$ROOT_DIR/integration/results"
+HOME_DIR="${CSTORE_TEST_HOME:-/tmp/cstore-integration-home}"
+STORE_DIR="$HOME_DIR/.composer-store"
+
+mkdir -p "$RESULTS_DIR"
+rm -f "$RESULTS_DIR"/project-*.log "$RESULTS_DIR"/latest-summary.md
+
+if [[ "${1:-}" == "--clean" ]]; then
+  rm -rf "$HOME_DIR"
+fi
+
+mkdir -p "$HOME_DIR"
+
+log() {
+  printf '%s\n' "$*"
+}
+
+count_lock_packages() {
+  local lock_file="$1"
+  php -r '$f=$argv[1]; if(!is_file($f)){echo 0; exit(0);} $d=json_decode(file_get_contents($f), true); if(!is_array($d)){echo 0; exit(0);} $a=count($d["packages"] ?? []); $b=count($d["packages-dev"] ?? []); echo $a+$b;' "$lock_file"
+}
+
+start_all="$(date +%s)"
+
+success_count=0
+failure_count=0
+summary_rows=()
+
+for project_path in "$PROJECTS_DIR"/project-*; do
+  project_name="$(basename "$project_path")"
+  log_file="$RESULTS_DIR/${project_name}.log"
+
+  rm -rf "$project_path/vendor" "$project_path/composer.lock"
+
+  start_project="$(date +%s)"
+  if HOME="$HOME_DIR" COMPOSER_HOME="$HOME_DIR/.composer" composer update \
+      --working-dir "$project_path" \
+      --no-interaction \
+      --prefer-dist \
+      --no-progress >"$log_file" 2>&1; then
+    status="ok"
+    ((success_count += 1))
+  else
+    status="failed"
+    ((failure_count += 1))
+  fi
+  end_project="$(date +%s)"
+
+  duration="$((end_project - start_project))"
+  package_count="$(count_lock_packages "$project_path/composer.lock")"
+  summary_rows+=("| ${project_name} | ${status} | ${package_count} | ${duration}s |")
+done
+
+end_all="$(date +%s)"
+all_duration="$((end_all - start_all))"
+
+if [[ -d "$STORE_DIR/packages" ]]; then
+  store_package_count="$(find "$STORE_DIR/packages" -mindepth 1 -maxdepth 1 -type d | wc -l | tr -d ' ')"
+  store_size_human="$(du -sh "$STORE_DIR" | awk '{print $1}')"
+else
+  store_package_count="0"
+  store_size_human="0B"
+fi
+
+private_pkg_ok="no"
+if [[ -f "$PROJECTS_DIR/project-05/vendor/acme/private-toolkit/src/Toolkit.php" ]]; then
+  private_pkg_ok="yes"
+fi
+
+hardlink_status="not-verified"
+shared_file_store=""
+shared_file_p1="$PROJECTS_DIR/project-01/vendor/psr/log/src/LoggerInterface.php"
+shared_file_p2="$PROJECTS_DIR/project-02/vendor/psr/log/src/LoggerInterface.php"
+
+if [[ -f "$shared_file_p1" && -f "$shared_file_p2" ]]; then
+  shared_file_store="$(find "$STORE_DIR/packages" -maxdepth 4 -type f -path '*/psr+log@*/src/LoggerInterface.php' | head -n 1 || true)"
+  if [[ -n "$shared_file_store" && -f "$shared_file_store" ]]; then
+    inode_store="$(stat -f '%i' "$shared_file_store")"
+    inode_p1="$(stat -f '%i' "$shared_file_p1")"
+    inode_p2="$(stat -f '%i' "$shared_file_p2")"
+
+    if [[ "$inode_store" == "$inode_p1" && "$inode_store" == "$inode_p2" ]]; then
+      hardlink_status="verified"
+    else
+      hardlink_status="mismatch"
+    fi
+  fi
+fi
+
+summary_file="$RESULTS_DIR/latest-summary.md"
+run_date="$(date '+%Y-%m-%d %H:%M:%S %z')"
+cat > "$summary_file" <<EOF
+## 10-Project Composer Plugin Matrix Summary
+
+- Run date: ${run_date}
+- Projects tested: 10
+- Successful installs: ${success_count}
+- Failed installs: ${failure_count}
+- Total elapsed time: ${all_duration}s
+- Store location: ${STORE_DIR}
+- Store package count: ${store_package_count}
+- Store size: ${store_size_human}
+- Private package installed (project-05): ${private_pkg_ok}
+- Hard link verification (psr/log across project-01 and project-02): ${hardlink_status}
+
+### Per-project Results
+
+| Project | Status | Locked Packages | Duration |
+|---|---|---:|---:|
+EOF
+
+for row in "${summary_rows[@]}"; do
+  echo "$row" >> "$summary_file"
+done
+
+if [[ -n "$shared_file_store" ]]; then
+  {
+    echo
+    echo "### Shared File Verification"
+    echo
+    echo "- Store file: ${shared_file_store}"
+    echo "- Project-01 file: ${shared_file_p1}"
+    echo "- Project-02 file: ${shared_file_p2}"
+  } >> "$summary_file"
+fi
+
+log "Matrix run complete: $summary_file"

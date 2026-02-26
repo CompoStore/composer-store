@@ -1,0 +1,21 @@
+{
+  "name": "cstore/test-project-07",
+  "description": "Integration fixture project 07",
+  "repositories": [
+    {
+      "type": "path",
+      "url": "../../..",
+      "options": { "symlink": true }
+    }
+  ],
+  "require": {
+    "cstore/cstore": "*@dev",
+    "doctrine/collections": "^2.2",
+    "psr/log": "^3.0"
+  },
+  "config": {
+    "allow-plugins": {
+      "cstore/cstore": true
+    }
+  }
+}

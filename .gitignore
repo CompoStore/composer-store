@@ -1,0 +1,9 @@
+/vendor/
+/example/vendor/
+/example-b/vendor/
+/integration/projects/*/vendor/
+/integration/results/project-*.log
+/.integration-home/
+composer.lock
+.DS_Store
+.phpunit.result.cache

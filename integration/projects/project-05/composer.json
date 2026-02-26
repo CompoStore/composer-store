@@ -1,0 +1,26 @@
+{
+  "name": "cstore/test-project-05",
+  "description": "Integration fixture project 05 (includes private package)",
+  "repositories": [
+    {
+      "type": "path",
+      "url": "../../private-packages/acme-private-toolkit",
+      "options": { "symlink": false }
+    },
+    {
+      "type": "path",
+      "url": "../../..",
+      "options": { "symlink": true }
+    }
+  ],
+  "require": {
+    "cstore/cstore": "*@dev",
+    "acme/private-toolkit": "*@dev",
+    "ramsey/uuid": "^4.7"
+  },
+  "config": {
+    "allow-plugins": {
+      "cstore/cstore": true
+    }
+  }
+}

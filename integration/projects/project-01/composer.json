@@ -1,0 +1,21 @@
+{
+  "name": "cstore/test-project-01",
+  "description": "Integration fixture project 01",
+  "repositories": [
+    {
+      "type": "path",
+      "url": "../../..",
+      "options": { "symlink": true }
+    }
+  ],
+  "require": {
+    "cstore/cstore": "*@dev",
+    "monolog/monolog": "^3.0",
+    "psr/log": "^3.0"
+  },
+  "config": {
+    "allow-plugins": {
+      "cstore/cstore": true
+    }
+  }
+}

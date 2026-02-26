@@ -1,0 +1,20 @@
+#!/usr/bin/env php
+<?php
+
+// Support both local dev and global install
+$autoloaders = [
+    __DIR__ . '/../vendor/autoload.php',
+    __DIR__ . '/../../../autoload.php',
+];
+
+foreach ($autoloaders as $autoloader) {
+    if (file_exists($autoloader)) {
+        require $autoloader;
+        break;
+    }
+}
+
+use CStore\Application;
+
+$app = new Application();
+$app->run();

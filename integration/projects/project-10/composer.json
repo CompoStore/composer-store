@@ -1,0 +1,21 @@
+{
+  "name": "cstore/test-project-10",
+  "description": "Integration fixture project 10",
+  "repositories": [
+    {
+      "type": "path",
+      "url": "../../..",
+      "options": { "symlink": true }
+    }
+  ],
+  "require": {
+    "cstore/cstore": "*@dev",
+    "illuminate/support": "^11.0",
+    "nesbot/carbon": "^3.0"
+  },
+  "config": {
+    "allow-plugins": {
+      "cstore/cstore": true
+    }
+  }
+}
