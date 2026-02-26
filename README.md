@@ -1,4 +1,8 @@
-# cstore
+<p align="center">
+  <img src="assets/compostore-icon.svg" alt="CompoStore icon" width="120" />
+</p>
+
+# CompoStore
 
 > **⚠️ Early Development — MVP Testing Phase**
 > This project is under active development and is currently being tested as an MVP. APIs, behaviour, and file formats may change. Not recommended for production use yet. Feedback and bug reports welcome.
@@ -12,7 +16,7 @@
 
 ## The Problem
 
-Every Laravel/PHP project has its own `vendor/` directory. With 100 projects, `laravel/framework` is downloaded and stored 100 times. pnpm solved this for Node.js — `cstore` brings the same idea to Composer.
+Every Laravel/PHP project has its own `vendor/` directory. With 100 projects, `laravel/framework` is downloaded and stored 100 times. pnpm solved this for Node.js — CompoStore brings the same idea to Composer.
 
 ## How It Works
 
@@ -35,7 +39,7 @@ project-c/vendor/laravel/framework/  ← hard linked to same file (inode: 269463
 
 ### Option 1: Composer Plugin (Recommended)
 
-Add cstore to your project and `composer install` works transparently:
+Add CompoStore to your project and `composer install` works transparently:
 
 ```json
 {
@@ -50,7 +54,7 @@ Add cstore to your project and `composer install` works transparently:
 }
 ```
 
-Then just run `composer install` as usual — cstore intercepts library package installs and routes them through the global store automatically.
+Then just run `composer install` as usual — CompoStore intercepts library package installs and routes them through the global store automatically.
 
 ### Option 2: Standalone CLI
 
@@ -59,32 +63,34 @@ git clone https://github.com/CompoStore/composer-store
 cd composer-store && composer install
 
 # Install packages for a project
-./bin/cstore install /path/to/project
+./bin/compostore install /path/to/project
 
 # Check store status
-./bin/cstore status
+./bin/compostore status
 
 # Prune unused packages
-./bin/cstore prune --scan ~/projects --dry-run
+./bin/compostore prune --scan ~/projects --dry-run
 ```
+
+The current CLI binary name is `compostore`.
 
 ---
 
 ## CLI Commands
 
-### `cstore install [path] [--no-dev] [--store=PATH]`
+### `compostore install [path] [--no-dev] [--store=PATH]`
 
 Reads `composer.lock`, syncs packages to the global store, and hard links them into `vendor/`.
 
 ```bash
-cstore install                 # current directory
-cstore install /path/to/project
-cstore install --no-dev        # skip dev dependencies
+compostore install                 # current directory
+compostore install /path/to/project
+compostore install --no-dev        # skip dev dependencies
 ```
 
 Supported dist types: `zip`, `tar`, `tgz`/`tar.gz`, and `path`.
 
-### `cstore status [--store=PATH]`
+### `compostore status [--store=PATH]`
 
 Shows store location, total packages, and disk usage.
 
@@ -99,13 +105,13 @@ Stored Packages
   ✓ filament+filament@3.2.0
 ```
 
-### `cstore prune [--dry-run] [--scan=DIR] [--store=PATH]`
+### `compostore prune [--dry-run] [--scan=DIR] [--store=PATH]`
 
 Removes packages from the store that are no longer referenced by any project.
 
 ```bash
-cstore prune --dry-run --scan ~/projects   # preview
-cstore prune --scan ~/projects             # actually remove
+compostore prune --dry-run --scan ~/projects   # preview
+compostore prune --scan ~/projects             # actually remove
 ```
 
 ---
@@ -157,11 +163,11 @@ This generates per-project logs in `integration/results/` and a summary file:
 
 ## Real Laravel Live Smoke Test (Ephemeral)
 
-In addition to fixture projects, a live smoke test was executed with two real `laravel/laravel` projects created under `/tmp`, both configured to use cstore via Composer Plugin.
+In addition to fixture projects, a live smoke test was executed with two real `laravel/laravel` projects created under `/tmp`, both configured to use CompoStore via Composer Plugin.
 
 ### What was validated
 
-- Both Laravel projects completed dependency install with cstore plugin enabled
+- Both Laravel projects completed dependency install with CompoStore plugin enabled
 - Both apps ran concurrently with `php artisan serve` on separate ports
   - `127.0.0.1:8101`
   - `127.0.0.1:8102`
@@ -181,9 +187,9 @@ In addition to fixture projects, a live smoke test was executed with two real `l
 src/
   Application.php                 ← Symfony Console bootstrap
   Commands/
-    InstallCommand.php            ← cstore install
-    StatusCommand.php             ← cstore status
-    PruneCommand.php              ← cstore prune
+    InstallCommand.php            ← compostore install
+    StatusCommand.php             ← compostore status
+    PruneCommand.php              ← compostore prune
   Store/
     GlobalStore.php               ← manages ~/.composer-store
     PackageDownloader.php         ← syncs package archives/path repos into store (with integrity checks)
@@ -205,7 +211,7 @@ tests/
   Store/PackageDownloaderTest.php
   Store/PackageInspectorTest.php
 bin/
-  cstore                          ← CLI entry point
+  compostore                          ← CLI entry point
   run-integration-matrix          ← 10-project Composer plugin test runner
 integration/
   projects/                       ← 10 integration fixture projects
@@ -218,7 +224,7 @@ integration/
 ## How the Composer Plugin Works
 
 1. User adds `compostore/composer-store` to their project's `composer.json`
-2. `composer install` installs cstore and its dependencies first (normal Composer flow)
+2. `composer install` installs CompoStore and its dependencies first (normal Composer flow)
 3. Plugin activates and registers a custom installer (`CompoStoreInstaller`)
 4. All subsequent `library` type packages go through the store:
    - **Sync phase**: package is downloaded/extracted (or copied for `path` repos) to `~/.composer-store/packages/`

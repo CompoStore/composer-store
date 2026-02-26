@@ -46,7 +46,7 @@ class PackageDownloader
 
             if (!$distUrl) {
                 throw new RuntimeException(
-                    "No dist URL for {$name}@{$version}. Path and VCS-only packages are not supported by cstore."
+                    "No dist URL for {$name}@{$version}. Path and VCS-only packages are not supported by compostore."
                 );
             }
 
@@ -185,7 +185,7 @@ class PackageDownloader
         $context = stream_context_create([
             'http' => [
                 'timeout' => 60,
-                'user_agent' => 'cstore/0.1.0 (Composer Store)',
+                'user_agent' => 'compostore/0.1.0 (Composer Store)',
                 'follow_location' => true,
             ],
             'ssl' => [

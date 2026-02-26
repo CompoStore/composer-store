@@ -24,7 +24,7 @@
             "CompoStore\\Tests\\": "tests/"
         }
     },
-    "bin": ["bin/cstore"],
+    "bin": ["bin/compostore"],
     "extra": {
         "class": "CompoStore\\Plugin\\CompoStorePlugin"
     },

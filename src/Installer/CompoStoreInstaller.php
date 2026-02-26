@@ -58,13 +58,13 @@ class CompoStoreInstaller extends LibraryInstaller
 
         // Skip packages without dist URL (VCS-only or unsupported).
         if (!$distUrl) {
-            $this->io->write("  <info>cstore:</info> {$name} has no dist URL, using Composer default", true, IOInterface::VERBOSITY_VERBOSE);
+            $this->io->write("  <info>compostore:</info> {$name} has no dist URL, using Composer default", true, IOInterface::VERBOSITY_VERBOSE);
             return parent::install($repo, $package);
         }
 
         // Skip unsupported dist types
         if (!in_array($distType, ['zip', 'path', 'tar', 'tgz', 'tar.gz'], true)) {
-            $this->io->write("  <info>cstore:</info> {$name} has dist type '{$distType}', using Composer default", true, IOInterface::VERBOSITY_VERBOSE);
+            $this->io->write("  <info>compostore:</info> {$name} has dist type '{$distType}', using Composer default", true, IOInterface::VERBOSITY_VERBOSE);
             return parent::install($repo, $package);
         }
 
@@ -79,7 +79,7 @@ class CompoStoreInstaller extends LibraryInstaller
                 $distReference
             );
         } catch (\Exception $e) {
-            $this->io->writeError("  <warning>cstore: store failed for {$name}, using Composer default: {$e->getMessage()}</warning>");
+            $this->io->writeError("  <warning>compostore: store failed for {$name}, using Composer default: {$e->getMessage()}</warning>");
             return parent::install($repo, $package);
         }
 

@@ -29,7 +29,7 @@ class PruneCommand extends Command
         $isDryRun = $input->getOption('dry-run');
         $scanDirs = $input->getOption('scan');
 
-        $io->title('🗄  cstore prune');
+        $io->title('🗄  compostore prune');
 
         if ($isDryRun) {
             $io->note('Dry run mode — nothing will be deleted');

@@ -34,7 +34,7 @@ class InstallCommand extends Command
         $includeDev = !$input->getOption('no-dev');
         $storePath = $input->getOption('store') ?: null;
 
-        $io->title('🗄  cstore install');
+        $io->title('🗄  compostore install');
 
         // Validate project path
         if (!$projectPath || !is_dir($projectPath)) {

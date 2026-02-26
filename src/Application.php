@@ -1,6 +1,6 @@
 <?php
 
-namespace CStore;
+namespace CompoStore;
 
 use CompoStore\Commands\InstallCommand;
 use CompoStore\Commands\StatusCommand;
@@ -13,7 +13,7 @@ class Application
 
     public function __construct()
     {
-        $this->console = new ConsoleApplication('cstore', '0.1.0');
+        $this->console = new ConsoleApplication('compostore', '0.1.0');
         $this->console->addCommands([
             new InstallCommand(),
             new StatusCommand(),

@@ -13,7 +13,7 @@ class CompoStorePlugin implements PluginInterface
 
     public function activate(Composer $composer, IOInterface $io): void
     {
-        $io->write('<info>cstore:</info> Global store plugin active');
+        $io->write('<info>compostore:</info> Global store plugin active');
 
         $this->installer = new CompoStoreInstaller($io, $composer);
         $composer->getInstallationManager()->addInstaller($this->installer);
@@ -30,6 +30,6 @@ class CompoStorePlugin implements PluginInterface
     public function uninstall(Composer $composer, IOInterface $io): void
     {
         // Store packages remain in ~/.composer-store for other projects.
-        // Users can run `cstore prune` to clean up.
+        // Users can run `compostore prune` to clean up.
     }
 }

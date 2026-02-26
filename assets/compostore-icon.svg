@@ -1,0 +1,26 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="64" y1="48" x2="448" y2="464" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0E3B2E"/>
+      <stop offset="1" stop-color="#1A8F6A"/>
+    </linearGradient>
+    <linearGradient id="card" x1="152" y1="136" x2="360" y2="376" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F3FAF7"/>
+      <stop offset="1" stop-color="#DDF4EB"/>
+    </linearGradient>
+    <linearGradient id="link" x1="188" y1="172" x2="324" y2="316" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D34F1E"/>
+      <stop offset="1" stop-color="#FF8C42"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="40" y="40" width="432" height="432" rx="96" fill="url(#bg)"/>
+  <rect x="112" y="120" width="288" height="272" rx="44" fill="url(#card)"/>
+  <rect x="152" y="160" width="208" height="22" rx="11" fill="#1D5A45"/>
+  <rect x="152" y="330" width="208" height="22" rx="11" fill="#1D5A45"/>
+
+  <g>
+    <path d="M215.8 205.2C230.4 190.6 254 190.6 268.6 205.2L280 216.6C286.3 222.9 286.3 233.1 280 239.4C273.7 245.7 263.5 245.7 257.2 239.4L245.8 228C243.8 226 240.6 226 238.6 228L224 242.6C222 244.6 222 247.8 224 249.8L235.4 261.2C241.7 267.5 241.7 277.7 235.4 284C229.1 290.3 218.9 290.3 212.6 284L201.2 272.6C186.6 258 186.6 234.4 201.2 219.8L215.8 205.2Z" fill="url(#link)"/>
+    <path d="M296.2 306.8C281.6 321.4 258 321.4 243.4 306.8L232 295.4C225.7 289.1 225.7 278.9 232 272.6C238.3 266.3 248.5 266.3 254.8 272.6L266.2 284C268.2 286 271.4 286 273.4 284L288 269.4C290 267.4 290 264.2 288 262.2L276.6 250.8C270.3 244.5 270.3 234.3 276.6 228C282.9 221.7 293.1 221.7 299.4 228L310.8 239.4C325.4 254 325.4 277.6 310.8 292.2L296.2 306.8Z" fill="url(#link)"/>
+  </g>
+</svg>

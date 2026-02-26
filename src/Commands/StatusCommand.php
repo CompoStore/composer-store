@@ -23,7 +23,7 @@ class StatusCommand extends Command
         $io = new SymfonyStyle($input, $output);
         $storePath = $input->getOption('store') ?: null;
 
-        $io->title('🗄  cstore status');
+        $io->title('🗄  compostore status');
 
         $store = new GlobalStore($storePath);
         $stats = $store->getStats();
@@ -42,7 +42,7 @@ class StatusCommand extends Command
                 $io->writeln("  <fg=green>✓</> {$pkg}");
             }
         } else {
-            $io->writeln('<fg=gray>No packages in store yet. Run `cstore install` in a project.</>');
+            $io->writeln('<fg=gray>No packages in store yet. Run `compostore install` in a project.</>');
         }
 
         return Command::SUCCESS;
