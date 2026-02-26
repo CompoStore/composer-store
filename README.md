@@ -40,11 +40,11 @@ Add cstore to your project and `composer install` works transparently:
 ```json
 {
     "require": {
-        "cstore/cstore": "*@dev"
+        "compostore/compostore": "*@dev"
     },
     "config": {
         "allow-plugins": {
-            "cstore/cstore": true
+            "compostore/compostore": true
         }
     }
 }
@@ -55,7 +55,7 @@ Then just run `composer install` as usual — cstore intercepts library package 
 ### Option 2: Standalone CLI
 
 ```bash
-git clone https://github.com/lam0819/composer-store
+git clone https://github.com/CompoStore/composer-store
 cd composer-store && composer install
 
 # Install packages for a project
@@ -116,7 +116,7 @@ All integration fixtures now live under `integration/projects/` (no root `exampl
 
 ### What the matrix covers
 
-- 10 separate projects using the **Composer Plugin** approach (`cstore/cstore` in `require`)
+- 10 separate projects using the **Composer Plugin** approach (`compostore/compostore` in `require`)
 - Popular public packages across Symfony, Guzzle, Monolog, Doctrine, Flysystem, and Laravel
 - One local private package (`acme/private-toolkit`) installed in `project-05`
 - Hard-link verification for shared files (`psr/log`) across projects
@@ -217,7 +217,7 @@ integration/
 
 ## How the Composer Plugin Works
 
-1. User adds `cstore/cstore` to their project's `composer.json`
+1. User adds `compostore/compostore` to their project's `composer.json`
 2. `composer install` installs cstore and its dependencies first (normal Composer flow)
 3. Plugin activates and registers a custom installer (`CStoreInstaller`)
 4. All subsequent `library` type packages go through the store:

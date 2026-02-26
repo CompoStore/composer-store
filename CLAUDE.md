@@ -149,7 +149,7 @@ The plugin is implemented with a custom `LibraryInstaller`:
 // composer.json of any project
 {
   "require": {
-    "cstore/cstore": "^1.0"
+    "compostore/compostore": "^1.0"
   }
 }
 ```

@@ -1,5 +1,5 @@
 {
-  "name": "cstore/test-project-05",
+  "name": "compostore/test-project-05",
   "description": "Integration fixture project 05 (includes private package)",
   "repositories": [
     {
@@ -14,13 +14,13 @@
     }
   ],
   "require": {
-    "cstore/cstore": "*@dev",
+    "compostore/compostore": "*@dev",
     "acme/private-toolkit": "*@dev",
     "ramsey/uuid": "^4.7"
   },
   "config": {
     "allow-plugins": {
-      "cstore/cstore": true
+      "compostore/compostore": true
     }
   }
 }

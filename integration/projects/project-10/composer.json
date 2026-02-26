@@ -1,5 +1,5 @@
 {
-  "name": "cstore/test-project-10",
+  "name": "compostore/test-project-10",
   "description": "Integration fixture project 10",
   "repositories": [
     {
@@ -9,13 +9,13 @@
     }
   ],
   "require": {
-    "cstore/cstore": "*@dev",
+    "compostore/compostore": "*@dev",
     "illuminate/support": "^11.0",
     "nesbot/carbon": "^3.0"
   },
   "config": {
     "allow-plugins": {
-      "cstore/cstore": true
+      "compostore/compostore": true
     }
   }
 }

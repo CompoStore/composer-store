@@ -1,5 +1,5 @@
 {
-  "name": "cstore/test-project-09",
+  "name": "compostore/test-project-09",
   "description": "Integration fixture project 09",
   "repositories": [
     {
@@ -9,13 +9,13 @@
     }
   ],
   "require": {
-    "cstore/cstore": "*@dev",
+    "compostore/compostore": "*@dev",
     "nikic/fast-route": "^1.3",
     "guzzlehttp/psr7": "^2.7"
   },
   "config": {
     "allow-plugins": {
-      "cstore/cstore": true
+      "compostore/compostore": true
     }
   }
 }

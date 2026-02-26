@@ -1,5 +1,5 @@
 {
-  "name": "cstore/test-project-02",
+  "name": "compostore/test-project-02",
   "description": "Integration fixture project 02",
   "repositories": [
     {
@@ -9,13 +9,13 @@
     }
   ],
   "require": {
-    "cstore/cstore": "*@dev",
+    "compostore/compostore": "*@dev",
     "guzzlehttp/guzzle": "^7.8",
     "psr/log": "^3.0"
   },
   "config": {
     "allow-plugins": {
-      "cstore/cstore": true
+      "compostore/compostore": true
     }
   }
 }
