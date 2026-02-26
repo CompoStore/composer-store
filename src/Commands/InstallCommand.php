@@ -1,13 +1,13 @@
 <?php
 
-namespace CStore\Commands;
+namespace CompoStore\Commands;
 
-use CStore\Linker\AutoloaderGenerator;
-use CStore\Linker\VendorLinker;
-use CStore\Parser\LockFileParser;
-use CStore\Store\GlobalStore;
-use CStore\Store\PackageDownloader;
-use CStore\Store\PackageInspector;
+use CompoStore\Linker\AutoloaderGenerator;
+use CompoStore\Linker\VendorLinker;
+use CompoStore\Parser\LockFileParser;
+use CompoStore\Store\GlobalStore;
+use CompoStore\Store\PackageDownloader;
+use CompoStore\Store\PackageInspector;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;

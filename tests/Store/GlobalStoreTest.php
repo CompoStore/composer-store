@@ -1,8 +1,8 @@
 <?php
 
-namespace CStore\Tests\Store;
+namespace CompoStore\Tests\Store;
 
-use CStore\Store\GlobalStore;
+use CompoStore\Store\GlobalStore;
 use PHPUnit\Framework\TestCase;
 
 class GlobalStoreTest extends TestCase

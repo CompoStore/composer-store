@@ -1,6 +1,6 @@
 <?php
 
-namespace CStore\Plugin;
+namespace CompoStore\Plugin;
 
 use Composer\IO\IOInterface;
 use Symfony\Component\Console\Formatter\OutputFormatter;

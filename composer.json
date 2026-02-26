@@ -16,17 +16,17 @@
     },
     "autoload": {
         "psr-4": {
-            "CStore\\": "src/"
+            "CompoStore\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "CStore\\Tests\\": "tests/"
+            "CompoStore\\Tests\\": "tests/"
         }
     },
     "bin": ["bin/cstore"],
     "extra": {
-        "class": "CStore\\Plugin\\CStorePlugin"
+        "class": "CompoStore\\Plugin\\CompoStorePlugin"
     },
     "config": {
         "sort-packages": true

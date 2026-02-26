@@ -1,6 +1,6 @@
 <?php
 
-namespace CStore\Store;
+namespace CompoStore\Store;
 
 class PackageInspector
 {

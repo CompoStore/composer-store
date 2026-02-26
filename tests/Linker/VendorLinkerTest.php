@@ -1,8 +1,8 @@
 <?php
 
-namespace CStore\Tests\Linker;
+namespace CompoStore\Tests\Linker;
 
-use CStore\Linker\VendorLinker;
+use CompoStore\Linker\VendorLinker;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Output\NullOutput;
 

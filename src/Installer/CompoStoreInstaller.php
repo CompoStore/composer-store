@@ -1,6 +1,6 @@
 <?php
 
-namespace CStore\Installer;
+namespace CompoStore\Installer;
 
 use Composer\Composer;
 use Composer\IO\IOInterface;
@@ -8,13 +8,13 @@ use Composer\Installer\LibraryInstaller;
 use Composer\Package\PackageInterface;
 use Composer\Repository\InstalledRepositoryInterface;
 use Composer\Util\Filesystem;
-use CStore\Store\GlobalStore;
-use CStore\Store\PackageDownloader;
-use CStore\Store\PackageInspector;
-use CStore\Linker\VendorLinker;
-use CStore\Plugin\IOOutputAdapter;
+use CompoStore\Store\GlobalStore;
+use CompoStore\Store\PackageDownloader;
+use CompoStore\Store\PackageInspector;
+use CompoStore\Linker\VendorLinker;
+use CompoStore\Plugin\IOOutputAdapter;
 
-class CStoreInstaller extends LibraryInstaller
+class CompoStoreInstaller extends LibraryInstaller
 {
     private GlobalStore $store;
     private PackageDownloader $downloader;

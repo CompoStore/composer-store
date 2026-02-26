@@ -1,21 +1,21 @@
 <?php
 
-namespace CStore\Plugin;
+namespace CompoStore\Plugin;
 
 use Composer\Composer;
 use Composer\IO\IOInterface;
 use Composer\Plugin\PluginInterface;
-use CStore\Installer\CStoreInstaller;
+use CompoStore\Installer\CompoStoreInstaller;
 
-class CStorePlugin implements PluginInterface
+class CompoStorePlugin implements PluginInterface
 {
-    private ?CStoreInstaller $installer = null;
+    private ?CompoStoreInstaller $installer = null;
 
     public function activate(Composer $composer, IOInterface $io): void
     {
         $io->write('<info>cstore:</info> Global store plugin active');
 
-        $this->installer = new CStoreInstaller($io, $composer);
+        $this->installer = new CompoStoreInstaller($io, $composer);
         $composer->getInstallationManager()->addInstaller($this->installer);
     }
 

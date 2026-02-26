@@ -1,8 +1,8 @@
 <?php
 
-namespace CStore\Tests\Store;
+namespace CompoStore\Tests\Store;
 
-use CStore\Store\PackageInspector;
+use CompoStore\Store\PackageInspector;
 use PHPUnit\Framework\TestCase;
 
 class PackageInspectorTest extends TestCase

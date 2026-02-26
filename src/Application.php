@@ -2,9 +2,9 @@
 
 namespace CStore;
 
-use CStore\Commands\InstallCommand;
-use CStore\Commands\StatusCommand;
-use CStore\Commands\PruneCommand;
+use CompoStore\Commands\InstallCommand;
+use CompoStore\Commands\StatusCommand;
+use CompoStore\Commands\PruneCommand;
 use Symfony\Component\Console\Application as ConsoleApplication;
 
 class Application

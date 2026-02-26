@@ -1,6 +1,6 @@
 <?php
 
-namespace CStore\Parser;
+namespace CompoStore\Parser;
 
 use RuntimeException;
 

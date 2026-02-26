@@ -1,8 +1,8 @@
 <?php
 
-namespace CStore\Tests\Parser;
+namespace CompoStore\Tests\Parser;
 
-use CStore\Parser\LockFileParser;
+use CompoStore\Parser\LockFileParser;
 use PHPUnit\Framework\TestCase;
 use RuntimeException;
 

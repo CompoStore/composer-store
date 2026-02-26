@@ -14,7 +14,7 @@ foreach ($autoloaders as $autoloader) {
     }
 }
 
-use CStore\Application;
+use CompoStore\Application;
 
 $app = new Application();
 $app->run();

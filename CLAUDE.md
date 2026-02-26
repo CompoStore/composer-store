@@ -154,7 +154,7 @@ The plugin is implemented with a custom `LibraryInstaller`:
 }
 ```
 
-- Library packages are intercepted by `CStoreInstaller`
+- Library packages are intercepted by `CompoStoreInstaller`
 - Supported dist types are stored via cstore (`zip`, `tar`, `tgz`/`tar.gz`, `path`)
 - Unsupported/source-only packages gracefully fall back to Composer's default installer
 - Composer continues to generate the autoloader in-process

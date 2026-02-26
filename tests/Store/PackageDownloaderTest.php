@@ -1,9 +1,9 @@
 <?php
 
-namespace CStore\Tests\Store;
+namespace CompoStore\Tests\Store;
 
-use CStore\Store\GlobalStore;
-use CStore\Store\PackageDownloader;
+use CompoStore\Store\GlobalStore;
+use CompoStore\Store\PackageDownloader;
 use PHPUnit\Framework\TestCase;
 use RuntimeException;
 use Symfony\Component\Console\Output\NullOutput;

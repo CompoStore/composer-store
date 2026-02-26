@@ -1,6 +1,6 @@
 <?php
 
-namespace CStore\Linker;
+namespace CompoStore\Linker;
 
 use RuntimeException;
 use Symfony\Component\Console\Output\OutputInterface;

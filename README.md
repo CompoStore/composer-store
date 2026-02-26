@@ -194,10 +194,10 @@ src/
   Parser/
     LockFileParser.php            ← parses composer.lock
   Plugin/
-    CStorePlugin.php              ← Composer plugin entry point
+    CompoStorePlugin.php              ← Composer plugin entry point
     IOOutputAdapter.php           ← bridges Composer IO to Symfony Output
   Installer/
-    CStoreInstaller.php           ← custom installer for Composer plugin
+    CompoStoreInstaller.php           ← custom installer for Composer plugin
 tests/
   Linker/VendorLinkerTest.php
   Parser/LockFileParserTest.php
@@ -219,7 +219,7 @@ integration/
 
 1. User adds `compostore/composer-store` to their project's `composer.json`
 2. `composer install` installs cstore and its dependencies first (normal Composer flow)
-3. Plugin activates and registers a custom installer (`CStoreInstaller`)
+3. Plugin activates and registers a custom installer (`CompoStoreInstaller`)
 4. All subsequent `library` type packages go through the store:
    - **Sync phase**: package is downloaded/extracted (or copied for `path` repos) to `~/.composer-store/packages/`
    - **Install phase**: files are hard linked from store into `vendor/`
