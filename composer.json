@@ -1,5 +1,5 @@
 {
-    "name": "compostore/compostore",
+    "name": "compostore/composer-store",
     "description": "A pnpm-inspired global store for Composer packages — share packages across projects, save disk space.",
     "type": "composer-plugin",
     "license": "MIT",

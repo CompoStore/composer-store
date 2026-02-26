@@ -9,13 +9,13 @@
     }
   ],
   "require": {
-    "compostore/compostore": "*@dev",
+    "compostore/composer-store": "*@dev",
     "illuminate/support": "^11.0",
     "nesbot/carbon": "^3.0"
   },
   "config": {
     "allow-plugins": {
-      "compostore/compostore": true
+      "compostore/composer-store": true
     }
   }
 }

@@ -14,13 +14,13 @@
     }
   ],
   "require": {
-    "compostore/compostore": "*@dev",
+    "compostore/composer-store": "*@dev",
     "acme/private-toolkit": "*@dev",
     "ramsey/uuid": "^4.7"
   },
   "config": {
     "allow-plugins": {
-      "compostore/compostore": true
+      "compostore/composer-store": true
     }
   }
 }

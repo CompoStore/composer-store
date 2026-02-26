@@ -9,13 +9,13 @@
     }
   ],
   "require": {
-    "compostore/compostore": "*@dev",
+    "compostore/composer-store": "*@dev",
     "monolog/monolog": "^3.0",
     "psr/log": "^3.0"
   },
   "config": {
     "allow-plugins": {
-      "compostore/compostore": true
+      "compostore/composer-store": true
     }
   }
 }
